@@ -32,7 +32,25 @@
 </head>
 <body>
     <div id="maze_container" style='overflow-wrap: break-word; line-height: 14px; letter-spacing: -2px;'></div>
-
+    <div id='copyrightContainer' style='position: fixed;
+    left: 50%;
+    bottom: 0.2rem;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;'>
+        <div class='copyrightContainerText' style='display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    color: #000;'>
+            <p id='copyrightText'></p>
+        </div>
+    </div>
+    <script>
+            window.onload = () => {
+                const currentYear = new Date().getFullYear()
+                const location = document.getElementById('copyrightText');
+                location.textContent = 'Copyright © Zachary Gopinath ' + currentYear;
+            }
+        </script>
     <!-- jQuery, Bootstrap Bundle (includes Popper) and Material -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha256-jXCJJT3KKcnNjZ3rfsabCj1EX4j2omR4xxm+H5CtywE=" crossorigin></script>
