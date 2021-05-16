@@ -19,7 +19,7 @@ function addColumns(colIndex, row, rowIndex) {
     addColumns(colIndex + 1, row, rowIndex)
 }
 
-const mazeWidth = 6;
+const mazeWidth = 5;
 const mazeHeight = mazeWidth;
 let rowIndex, colIndex;
 let currentCell;
@@ -32,29 +32,8 @@ table.appendChild(tbody);
 
 document.getElementById("maze_container").appendChild(table);
 
-let directions = ['right', 'down', 'right', 'right', 'down', 'right', 'right', 'down', 'down', 'down'];
-/*
-function addDirections(len, horizontalIndex, verticalIndex) {
-    if (horizontalIndex >= mazeWidth && verticalIndex >= mazeWidth) return 0
+let directions = ['right', 'down', 'right', 'right', 'down', 'right', 'down', 'down'];
 
-    let options = ['right', 'left', 'up', 'down'];
-    horizontalIndex == 1 ? options.splice(1) : null
-    verticalIndex == 1 ? options.splice(2) : null
-
-    const randomDirection = options[Math.floor(Math.random() * options.length)];
-    console.log(randomDirection)
-    directions.push(randomDirection);
-    randomDirection == 'right' ? horizontalIndex += 1 : null
-    randomDirection == 'left' ? horizontalIndex -= 1 : null
-    randomDirection == 'up' ? verticalIndex -= 1 : null
-    randomDirection == 'down' ? verticalIndex += 1 : null
-
-    document.getElementById("cell_" + verticalIndex + "_" + horizontalIndex).style.backgroundColor = '#f00000';
-    addDirections(len + 1, horizontalIndex, verticalIndex)
-}
-addDirections(0, 1, 1)
-console.log(directions)
-*/
 document.getElementById('cell_1_1').style.backgroundColor = '#f00000'
 function markDirections(directionNum, horizontalIndex, verticalIndex) {
     if (directionNum >= directions.length) return 0
