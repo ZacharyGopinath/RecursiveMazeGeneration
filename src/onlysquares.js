@@ -19,7 +19,7 @@ function addColumns(colIndex, row, rowIndex) {
     addColumns(colIndex + 1, row, rowIndex)
 }
 
-const mazeWidth = 5;
+const mazeWidth = 30;
 const mazeHeight = mazeWidth;
 let rowIndex, colIndex;
 let currentCell;
@@ -31,10 +31,54 @@ addRows(1)
 table.appendChild(tbody);
 
 document.getElementById("maze_container").appendChild(table);
+let directions = [];
+let exits = [];
+let exit;
 
-let directions = ['right', 'down', 'right', 'right', 'down', 'right', 'down', 'down'];
+let exitIndex;
+
+for (exit = 1; exit <= mazeWidth - 1; exit++) {
+
+    exits.push("right");
+    exits.push("down");
+
+}
+
+currentCell = document.getElementById("cell_1_1");
+
+rowIndex = 1;
+
+colIndex = 1;
+
+
+
+for (loop = 0; loop < (mazeWidth + mazeHeight - 2); loop++) {
+
+    exitIndex = Math.floor(Math.random() * exits.length);
+
+    exit = exits[exitIndex];
+
+    exits.splice(exitIndex, 1);
+
+    switch (exit) {
+
+        case "right":
+
+            colIndex = colIndex + 1;
+            break;
+
+        case "down":
+
+            rowIndex = rowIndex + 1;
+            break;
+
+    }
+    directions.push(exit)
+}
 
 document.getElementById('cell_1_1').style.backgroundColor = '#f00000'
+document.getElementById('cell_' + mazeWidth + '_' + mazeWidth).style.backgroundColor = '#34eb5e'
+
 function markDirections(directionNum, horizontalIndex, verticalIndex) {
     if (directionNum >= directions.length) return 0
 
@@ -48,17 +92,15 @@ function markDirections(directionNum, horizontalIndex, verticalIndex) {
     direction == 'up' ? verticalIndex -= 1 : null
     direction == 'down' ? verticalIndex += 1 : null
 
-    if (directionNum == directions.length - 1) document.getElementById("cell_" + verticalIndex + "_" + horizontalIndex).style.backgroundColor = '#34eb5e';
-    else {
-        //document.getElementById("cell_" + verticalIndex + "_" + horizontalIndex).style.backgroundColor = '#34eb5e';
-    }
+
 
 
     markDirections(directionNum + 1, horizontalIndex, verticalIndex)
 }
 markDirections(0, 1, 1);
+
 function createWrongPaths(len) {
-    if (len == 2 * mazeWidth) return 0
+    if (len == Math.round(20 * mazeWidth)) return 0
 
     const verticalIndex = Math.floor(Math.random() * mazeWidth);
     const horizontalIndex = Math.floor(Math.random() * mazeWidth);
